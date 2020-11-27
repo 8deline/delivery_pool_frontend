@@ -42,12 +42,12 @@ axios.post('http://localhost:5000/api/v1/users/new', qs.stringify({
             <form onSubmit={e=>{this.handlesSubmit(e)}}>
   <div class="form-group">
     <label for="firstname">First name</label>
-    <input type="text" class="form-control" id="firstname" name="firstnamme" onChange={e=>{this.handleChange(e)}} />
+    <input type="text" class="form-control" id="firstname" name="firstname" onChange={e=>{this.handleChange(e)}} />
     
   </div>
   <div class="form-group">
     <label for="lastname">Last name</label>
-    <input type="text" class="form-control" id="lastname" name="lastnamme" onChange={e=>{this.handleChange(e)}} />
+    <input type="text" class="form-control" id="lastname" name="lastname" onChange={e=>{this.handleChange(e)}} />
     
   </div>
   <div class="form-group">
