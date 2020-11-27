@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class SiteHeader extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container">
           <div>
             <Link className="navbar-brand" to="/">
@@ -27,15 +27,15 @@ class SiteHeader extends React.Component {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
-                  <button className="btn btn-light">
-                    <i class="fas fa-shopping-bag"> Your Order</i>
+                  <button className="btn">
+                    <i className="fas fa-shopping-bag"> Your Order</i>
                   </button>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/baked-goods">
-                  <button className="btn btn-light">
-                    <i class="fas fa-user-shield"> Login</i>
+                  <button className="btn">
+                    <i className="fas fa-user-shield"> Login</i>
                   </button>
                 </Link>
               </li>
