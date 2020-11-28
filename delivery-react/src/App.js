@@ -3,6 +3,7 @@ import './App.css';
 import Userinput from './components/userinput'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import CreateNewOrder from './components/createOrderButton'
+import NewOrderForm from './components/newOrderForm'
 
 class App extends React.Component{
 
@@ -11,7 +12,7 @@ class App extends React.Component{
       <Router>
         <Switch>
           <Route path='/users/dashboard' component={CreateNewOrder} />
-          {/* <Route path='/users/newOrder' component= {NewOrderForm} /> */}
+          <Route path='/users/newOrder' component= {NewOrderForm} />
         </Switch>
       </Router>
     )

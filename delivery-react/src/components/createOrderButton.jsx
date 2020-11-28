@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import {link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class CreateOrderButton extends React.Component{
 
@@ -8,21 +8,24 @@ class CreateOrderButton extends React.Component{
         super(props)
         this.state = {address: ''}
     }
-    
-    handleClick(e){
+
+    componentDidMount(){
         axios.get('http://localhost:5000/api/v1/users/neworder')
         .then(response=>{
             //console.log(response.data.address)
             this.setState({address: response.data.address})
         })
         .catch(err=>{console.log(err)})
-        
-
     }
+    
     
     render(){
         return (
-           <button type="button" onClick= {e=>{this.handleClick(e)}} class="btn btn-outline-secondary">Creat a new order</button> 
+            <div>
+                 {!this.state.address? '':
+           (<Link to={{pathname:"/users/newOrder", state:{address:this.state}}}><button type="button" className="btn btn-outline-secondary">Creat a new order</button></Link>)}
+            </div>
+           
         )
     }
 }
