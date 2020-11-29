@@ -1,0 +1,76 @@
+.App {
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
+  font-size: 18px;
+  color: #707070;
+}
+
+.btn {
+    padding: 10px 15px;
+}
+
+.btn-light {
+    background: #EAEAEA;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.col-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: calc(100vh - 120px - 51px);
+}
+
+.page-1-col {
+  .page-heading {
+    text-align: center;
+    margin: 50px 0;
+  }
+}
+
+.page-2-cols {
+  .col-content {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  article {
+    text-align: left;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  form {
+    text-align: left;
+    width: 75%;
+    margin: 0 auto;
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    input, textarea {
+      background: #f9f9f9;
+      border: none;
+    }
+
+    .form-messages {
+      color: red;
+      font-size: 14px;
+      list-style-type: none;
+      padding: 0;
+    }
+  }
+}
+
+.page-heading {
+  margin-bottom: 30px;
+
+  h1 {
+    font-weight: 300;
+    margin-bottom: 15px;
+  }
+  hr {
+    width: 80px;
+  }
+}

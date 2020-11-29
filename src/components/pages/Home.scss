@@ -1,0 +1,17 @@
+.page-home {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 120px - 51px);
+    
+    .container {
+        position: relative;
+    }
+    
+    .img-overlay {
+        position: absolute;
+        left: 0;
+        color: white;
+        font-size: 32px;
+        margin-top: 50px;
+    }
+}
