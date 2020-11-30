@@ -1,69 +1,109 @@
 import React from 'react'
+import axios from 'axios'
+
 
 class NewOrderForm extends React.Component{
     constructor(props){
         super(props)
-        this.state= {meetupPoint: this.props.location.state.address.address,
+        this.state= {meetupPoint: '',
         restaurant: '',
         estDeliveryTime: '',
         estDeliveryFee:'',
-        order:''
+        order:'',
+        error: ''
         }
     }
 
-    // componentDidMount(){
-    // // //     if (this.props.location.state.address && this.props.location.state){
-    // // //         this.setState({meetupPoint: this.props.location.state.address})
-    // // //         console.log(this.state)
-    // // //         return
+    componentDidMount(){
+        if ( this.props.location.state && this.props.location.state.address){
+            this.setState({meetupPoint: this.props.location.state.address.address})
+            
+            return
     // console.log(this.state.meetupPoint)
     // console.log(this.props.location.state.address.address)
-    //      } 
+         } 
+    }
+
+
+    handleChange(e){
+        e.preventDefault()
+        this.setState({[e.target.name]: e.target.value})
+        if (e.target.estDeliveryTime)
         
-    
+    }
+
+    handleSubmit(e){
+        e.preventDefault()
+        axios.post("http://localhost:5000/api/v1/users/neworder/create", {meetupPoint: this.state.meetupPoint,
+            restaurant: this.state.restaurant,
+             estDeliveryTime: this.state.estDeliveryTime,
+             estDeliveryFee: this.state.estDeliveryFee,
+             order: this.state.order} )
+        
+    //     qs.stringify({meetupPoint: this.state.meetupPoint,
+    //     restaurant: this.state.restaurant,
+    //     estDeliveryTime: this.state.estDeliveryTime,
+    //     estDeliveryFee: this.state.estDeliveryFee,
+    //     order: this.state.order
+    // }))
+        .then(response=>{
+            //console.log(response)
+            this.setState({
+                meetupPoint:'',
+                restaurant: '',
+                estDeliveryTime: '',
+                estDeliveryFee:'',
+                order:''
+                    })
+        })
+        .catch(err=>{console.log(err)})
+
+    }
     
 
     render(){
         return(
             <div>
-                {this.state.meetupPoint? (
+                {/* {this.state.meetupPoint? ( */}
                 <div>
-                    <form>
+                    <form onSubmit={e=>{this.handleSubmit(e)}}> 
                         <div class="form-group">
-                            <label for="restaurant">Restaurant</label>
-                            <input type="text" class="form-control" id="restaurant" name="restaurant" value={this.state.restaurant} aria-describedby="restaurant" required />
+                            <label for="restaurant">Restaurant (required)</label>
+                            <input type="text" class="form-control" id="restaurant" name="restaurant" value={this.state.restaurant} aria-describedby="restaurant" required onChange={e=>{this.handleChange(e)}} />
                             
                         </div>
 
                         <div class="form-group">
-                            <label for="estDeliveryTime">Estimated delivery time</label>
-                            <input type="number" step="1" class="form-control" id="estDeliveryTime" name="estDeliveryTime" value={this.state.estDeliveryTime} aria-describedby="estDeliveryTime" required/>
+                            <label for="estDeliveryTime">Estimated delivery time (mins) (required)</label>
+                            <input type="number" step="1" class="form-control" id="estDeliveryTime" name="estDeliveryTime" value={this.state.estDeliveryTime} aria-describedby="estDeliveryTime" onChange={e=>{this.handleChange(e)}} required/>
+                            
                             
                         </div>
 
                         <div class="form-group">
-                            <label for="estDeliveryFee">Estimated delivery fee</label>
-                            <input type="number" step="1" class="form-control" id="estDeliveryFee" name="estDeliveryFee" value={this.state.estDeliveryFee} aria-describedby="estDeliveryFee" required />
+                            <label for="estDeliveryFee">Estimated delivery fee (required) </label>  
+                            <input type="number" step=".01" class="form-control" id="estDeliveryFee" name="estDeliveryFee" value={this.state.estDeliveryFee} aria-describedby="estDeliveryFee" onChange={e=>{this.handleChange(e)}} required />
                             
                         </div>
 
                         <div class="form-group">
-                            <label for="meetupPoint">Meetup Point</label>
-                            <input type="text" class="form-control" id="meetupPoint" name="meetupPoint" value={this.state.meetupPoint} aria-describedby="meetupPoint" required />
+                            <label for="meetupPoint">Meetup Point (required)</label>
+                            <input type="text" class="form-control" id="meetupPoint" name="meetupPoint" value={this.state.meetupPoint} aria-describedby="meetupPoint" onChange={e=>{this.handleChange(e)}} required />
                             
                         </div>
 
                         <div class="form-group">
-                            <label for="order">Your order</label>
-                            <input type="text" class="form-control" id="order" name="order" value={this.state.order} aria-describedby="order" required />
-                            
+                        <label for="order">Your order (required)</label>
+                        <textarea class="form-control" id="order" rows="4" name="order" value={this.state.order} onChange={e=>{this.handleChange(e)}} aria-describedby="order" required></textarea>
                         </div>
+
+        
                         
                         <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                 </div>    
-                ): '' 
-                }
+                {/* ): '' 
+                } */}
             </div>
             
             //  <p>{this.state.meetupPoint}</p>
