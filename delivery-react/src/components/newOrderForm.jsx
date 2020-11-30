@@ -64,7 +64,7 @@ class NewOrderForm extends React.Component{
     render(){
         return(
             <div>
-                {/* {this.state.meetupPoint? ( */}
+                {this.state.meetupPoint? (
                 <div>
                     <form onSubmit={e=>{this.handleSubmit(e)}}> 
                         <div class="form-group">
@@ -102,8 +102,8 @@ class NewOrderForm extends React.Component{
                         <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                 </div>    
-                {/* ): '' 
-                } */}
+                 ): '' 
+                } 
             </div>
             
             //  <p>{this.state.meetupPoint}</p>
