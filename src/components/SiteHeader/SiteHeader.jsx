@@ -7,40 +7,26 @@ class SiteHeader extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container">
-          <div>
+          <ul className="nav">
             <Link className="navbar-brand" to="/">
-              Delivery Pool
+              <h3 className="heading-text">
+                <span className="first-text-heading">Delivery</span>
+                <span className="second-text-heading"> Pool</span>
+              </h3>
             </Link>
-          </div>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  <button className="btn">
-                    <i className="fas fa-shopping-bag"> Your Order</i>
-                  </button>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/baked-goods">
-                  <button className="btn">
-                    <i className="fas fa-user-shield"> Login</i>
-                  </button>
-                </Link>
-              </li>
-            </ul>
-          </div>
+          </ul>
+          <ul className="nav ml-auto">
+            <Link className="nav-link" to="/dashboard">
+              <button className="btn">
+                <i className="fas fa-shopping-bag"> Your order</i>
+              </button>
+            </Link>
+            <Link className="nav-link" to="/login">
+              <button className="btn">
+                <i className="fas fa-user-shield"> Login</i>
+              </button>
+            </Link>
+          </ul>
         </div>
       </nav>
     );
