@@ -63,6 +63,7 @@ class Register extends React.Component {
 
   handleFormSubmission(e) {
     e.preventDefault();
+
     axios
       .post(
         "http://localhost:5000/api/v1/users/register",
@@ -81,7 +82,7 @@ class Register extends React.Component {
       })
       .catch((err) => {
         this.setState({
-          formErr: "Error occurred in form, please check values",
+          formErr: err.response.data.message,
         });
       });
   }
