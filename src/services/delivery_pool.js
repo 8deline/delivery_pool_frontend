@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 
 const delivery_pool_API = {
   location: () => {
-    return axiosInstance.get("/location");
+    return axiosInstance.post("/location");
   },
 };
 
