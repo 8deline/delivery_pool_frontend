@@ -22,8 +22,8 @@ class CreateOrderButton extends React.Component{
     render(){
         return (
             <div>
-                 {!this.state.address? '':
-           (<Link to={{pathname:"/users/newOrder", state:{address:this.state}}}><button type="button" className="btn btn-outline-secondary">Creat a new order</button></Link>)}
+                 
+           (<Link to={{pathname:"/users/newOrder", state:{address:this.state}}}><button type="button" className="btn btn-outline-secondary">Creat a new order</button></Link>)
             </div>
            
         )
