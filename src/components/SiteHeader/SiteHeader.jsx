@@ -1,8 +1,24 @@
 import React from "react";
 import "./SiteHeader.scss";
 import { Link } from "react-router-dom";
+import { withCookies } from "react-cookie";
+import { withRouter } from "react-router-dom";
 
 class SiteHeader extends React.Component {
+  isAuthenticated() {
+    const token = this.props.cookies.get("token");
+
+    if (!token || token === "undefined" || token === "null") {
+      return false;
+    }
+
+    return true;
+  }
+
+  handleLogoutChange() {
+    this.props.cookies.remove("token");
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
@@ -16,16 +32,30 @@ class SiteHeader extends React.Component {
             </Link>
           </ul>
           <ul className="nav ml-auto">
-            <Link className="nav-link" to="/dashboard">
+            <Link className="nav-link" to="/users/dashboard">
               <button className="btn">
                 <i className="fas fa-shopping-bag"> Your order</i>
               </button>
             </Link>
-            <Link className="nav-link" to="/login">
-              <button className="btn">
-                <i className="fas fa-user-shield"> Login</i>
-              </button>
-            </Link>
+            {!this.isAuthenticated() ? (
+              <Link className="nav-link" to="/users/login">
+                <button className="btn">
+                  <i className="fas fa-user-shield"> Login</i>
+                </button>
+              </Link>
+            ) : (
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={(e) => {
+                  this.handleLogoutChange();
+                }}
+              >
+                <button className="btn">
+                  <i className="fas fa-sign-out-alt"> Logout</i>
+                </button>
+              </Link>
+            )}
           </ul>
         </div>
       </nav>
@@ -33,4 +63,4 @@ class SiteHeader extends React.Component {
   }
 }
 
-export default SiteHeader;
+export default withRouter(withCookies(SiteHeader));

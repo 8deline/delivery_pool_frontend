@@ -2,8 +2,11 @@ import React from "react";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
 import Index from "./components/pages/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Form from "./components/pages/Form";
-
+import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
+import Dashboard from "./components/pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import GuestRoute from "./components/GuestRoute";
 import "./App.scss";
 
 class App extends React.Component {
@@ -13,7 +16,9 @@ class App extends React.Component {
         <Router>
           <SiteHeader />
           <Switch>
-            <Route path="/form" component={Form} />
+            <GuestRoute path="/users/register" component={Register} />
+            <GuestRoute path="/users/login" component={Login} />
+            <ProtectedRoute path="/users/dashboard" component={Dashboard} />
             <Route path="/" component={Index} />
           </Switch>
         </Router>
