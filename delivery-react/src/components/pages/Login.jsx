@@ -60,11 +60,11 @@ class Login extends React.Component {
                     <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" onChange={ e => { this.handleEmailChange(e) } } className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input type="email" onChange={ e => { this.handleEmailChange(e) } } name = "email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
-                            <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } className="form-control" id="exampleInputPassword1" />
+                            <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } name="password" className="form-control" id="exampleInputPassword1" />
                         </div>
                         {
                             this.state.formErr !== "" ? (

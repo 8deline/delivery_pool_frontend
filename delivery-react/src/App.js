@@ -20,8 +20,8 @@ class App extends React.Component{
         <Switch>
         <GuestRoute path="/users/register" component={Register} />
             <GuestRoute path="/users/login" component={Login} />
-          <ProtectedRoute path='/users/dashboard' component={CreateNewOrder} />
-          <ProtectedRoute path='/users/newOrder' component= {NewOrderForm} />
+          <ProtectedRoute path="/users/dashboard" component={CreateNewOrder} />
+          <ProtectedRoute path="/users/newOrder" component= {NewOrderForm} />
         </Switch>
       </Router>
       </div>

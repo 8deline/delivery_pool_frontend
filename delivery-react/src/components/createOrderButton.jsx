@@ -14,6 +14,7 @@ class CreateOrderButton extends React.Component{
         .then(response=>{
             //console.log(response.data.address)
             this.setState({address: response.data.address})
+            
         })
         .catch(err=>{console.log(err)})
     }
@@ -22,8 +23,9 @@ class CreateOrderButton extends React.Component{
     render(){
         return (
             <div>
-                 
-           (<Link to={{pathname:"/users/newOrder", state:{address:this.state}}}><button type="button" className="btn btn-outline-secondary">Creat a new order</button></Link>)
+                
+           <Link to={{pathname:"/users/newOrder", state:{address:this.state.address}}}><button type="button" className="btn btn-outline-secondary">Creat a new order</button></Link>
+           <p>{this.state.address}</p>
             </div>
            
         )

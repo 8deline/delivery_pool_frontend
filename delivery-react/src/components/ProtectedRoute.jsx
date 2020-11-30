@@ -26,7 +26,7 @@ class ProtectedRoute extends React.Component {
 
         return (
             this.isAuthenticated() ? (
-                <Comp />
+                <Comp location={this.props.location} />
             ) : (
                 <Redirect to="/users/login" />
             )

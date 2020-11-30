@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { withCookies } from 'react-cookie'
 
 
 class NewOrderForm extends React.Component{
@@ -15,14 +16,17 @@ class NewOrderForm extends React.Component{
     }
 
     componentDidMount(){
-        if ( this.props.location.state && this.props.location.state.address){
-            this.setState({meetupPoint: this.props.location.state.address.address})
-            
+        
+        if (this.props.location.state && this.props.location.state.address) {
+            this.setState({
+                meetupPoint: this.props.location.state.address
+            })
             return
-    // console.log(this.state.meetupPoint)
-    // console.log(this.props.location.state.address.address)
+        }
+        
          } 
-    }
+    
+    
 
 
     handleChange(e){
@@ -38,7 +42,11 @@ class NewOrderForm extends React.Component{
             restaurant: this.state.restaurant,
              estDeliveryTime: this.state.estDeliveryTime,
              estDeliveryFee: this.state.estDeliveryFee,
-             order: this.state.order} )
+             order: this.state.order}, 
+             {headers: {
+                'auth_token': this.props.cookies.get('token')
+              }})
+              
         
     //     qs.stringify({meetupPoint: this.state.meetupPoint,
     //     restaurant: this.state.restaurant,
@@ -47,7 +55,7 @@ class NewOrderForm extends React.Component{
     //     order: this.state.order
     // }))
         .then(response=>{
-            //console.log(response)
+            console.log(response)
             this.setState({
                 meetupPoint:'',
                 restaurant: '',
@@ -64,7 +72,7 @@ class NewOrderForm extends React.Component{
     render(){
         return(
             <div>
-                {this.state.meetupPoint? (
+                
                 <div>
                     <form onSubmit={e=>{this.handleSubmit(e)}}> 
                         <div class="form-group">
@@ -102,8 +110,7 @@ class NewOrderForm extends React.Component{
                         <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                 </div>    
-                 ): '' 
-                } 
+                
             </div>
             
             //  <p>{this.state.meetupPoint}</p>
@@ -115,4 +122,4 @@ class NewOrderForm extends React.Component{
 
 
 
-export default NewOrderForm
+export default withCookies(NewOrderForm)
