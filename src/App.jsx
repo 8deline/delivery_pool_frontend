@@ -7,6 +7,7 @@ import Register from "./components/pages/Register";
 import Dashboard from "./components/pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GuestRoute from "./components/GuestRoute";
+import NewOrderForm from "./components/pages/newOrderForm";
 import "./App.scss";
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
             <GuestRoute path="/users/register" component={Register} />
             <GuestRoute path="/users/login" component={Login} />
             <ProtectedRoute path="/users/dashboard" component={Dashboard} />
+            <ProtectedRoute path="/users/newOrder" component={NewOrderForm} />
             <Route path="/" component={Index} />
           </Switch>
         </Router>
