@@ -10,6 +10,7 @@ import Dashboard from './components/pages/Dashboard'
 import Login from './components/pages/Login'
 import Home from './components/pages/Home'
 import Register from './components/pages/Register'
+import showPendingOrders from './components/pages/showPendingOrders'
 
 class App extends React.Component{
 
@@ -22,6 +23,7 @@ class App extends React.Component{
             <GuestRoute path="/users/login" component={Login} />
           <ProtectedRoute path="/users/dashboard" component={CreateNewOrder} />
           <ProtectedRoute path="/users/newOrder" component= {NewOrderForm} />
+          <ProtectedRoute path="/users/allOrder" component= {showPendingOrders} />
         </Switch>
       </Router>
       </div>
