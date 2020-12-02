@@ -24,7 +24,7 @@ class showPendingOrders extends React.Component{
         )
         .then(response=>{
             this.setState({order: response.data})
-            console.log(this.state.order)
+            // console.log(this.state.order)
         })
             
         .catch(err=>{
@@ -40,7 +40,7 @@ class showPendingOrders extends React.Component{
             {this.state.order.map(orderitem =>{ 
                 return (
                 <div>
-                <Link to= {{pathname:`/users/allOrders/${orderitem._id}` , state:{order: orderitem}}}><p>Restaurant: {orderitem.restaurant}</p></Link>
+                <Link to= {{pathname:`/users/allOrder/${orderitem._id}` , state:{order: orderitem}}}><p>Restaurant: {orderitem.restaurant}</p></Link>
                 <p>Delivery time (mins): {orderitem.deliveryTimeEst}</p>
                 <p>Delivery fee ($): {orderitem.deliveryFee}</p>
                 <p>Meetup Point: {orderitem.meetupPoint}</p>
