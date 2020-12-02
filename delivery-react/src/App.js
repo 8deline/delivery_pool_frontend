@@ -25,7 +25,7 @@ class App extends React.Component{
           <ProtectedRoute path="/users/dashboard" component={CreateNewOrder} />
           <ProtectedRoute path="/users/newOrder" component= {NewOrderForm} />
           <ProtectedRoute path="/users/allOrder/:_id" component= {createdorder} />
-          <ProtectedRoute path="/users/allOrder" component= {showPendingOrders} />
+          <ProtectedRoute path="/users/allOrder" component= {showPendingOrders}  />
           
         </Switch>
       </Router>

@@ -3,6 +3,9 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { withCookies } from 'react-cookie'
 
 class ProtectedRoute extends React.Component {
+
+
+
     // isAuthenticated will check if user is logged in or not
     isAuthenticated() {
         const token = this.props.cookies.get('token')
@@ -23,10 +26,10 @@ class ProtectedRoute extends React.Component {
 
     render() {
         const Comp = this.props.component
-
+        
         return (
             this.isAuthenticated() ? (
-                <Comp location={this.props.location} match={this.props.match} />
+                <Comp location={this.props.location}  />
             ) : (
                 <Redirect to="/users/login" />
             )
@@ -35,4 +38,4 @@ class ProtectedRoute extends React.Component {
     }
 }
 
-export default withCookies(withRouter(ProtectedRoute))
+export default withCookies(ProtectedRoute)
