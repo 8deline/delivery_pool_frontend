@@ -43,19 +43,28 @@
   margin-top: 5%;
   height: 100vh;
 
-  img {
-    width: 100%;
-    border-radius: 20px;
-  }
-
   .users-near-you {
     border: 1px solid black;
     border-radius: 20px;
     margin: 2% auto;
     padding: 5%;
 
+    .restaurant {
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    .delivery-fee {
+      font-weight: 200;
+    }
+
+    .lets-join-btn {
+      margin-top: 5%;
+      text-align: center;
+    }
+
     .time {
-      margin-left: 2%;
+      margin-left: 4%;
     }
   }
 }
