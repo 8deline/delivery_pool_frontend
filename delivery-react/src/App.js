@@ -10,7 +10,7 @@ import Dashboard from './components/pages/Dashboard'
 import Login from './components/pages/Login'
 import Home from './components/pages/Home'
 import Register from './components/pages/Register'
-import showPendingOrders from './components/pages/showPendingOrders'
+import showPendingOrders from './components/pages/createdorders/showPendingOrders'
 
 class App extends React.Component{
 

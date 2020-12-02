@@ -1,6 +1,7 @@
 import React from 'react'
 import {withCookies} from 'react-cookie'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 class showPendingOrders extends React.Component{
     constructor(props){
@@ -39,7 +40,7 @@ class showPendingOrders extends React.Component{
             {this.state.order.map(orderitem =>{ 
                 return (
                 <div>
-                <p>Restaurant: {orderitem.restaurant}</p>
+                <Link to= {{pathname:`/users/allOrders/${orderitem._id}` , state:{order: orderitem}}}><p>Restaurant: {orderitem.restaurant}</p></Link>
                 <p>Delivery time (mins): {orderitem.deliveryTimeEst}</p>
                 <p>Delivery fee ($): {orderitem.deliveryFee}</p>
                 <p>Meetup Point: {orderitem.meetupPoint}</p>
