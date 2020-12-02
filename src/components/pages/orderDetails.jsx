@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { withCookies } from "react-cookie";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 
 class orderDetails extends React.Component {
   constructor(props) {
@@ -47,6 +47,9 @@ class orderDetails extends React.Component {
               <div>
                 <div>{this.state.order.deliveryFee}</div>
                 <div>{this.state.order.meetupPoint}</div>
+                <Link to="/users/dashboard">
+                  <button className="btn btn-dark">Back</button>
+                </Link>
               </div>
             ) : (
               ""

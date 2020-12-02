@@ -16,6 +16,7 @@ class SiteHeader extends React.Component {
   }
 
   handleLogoutChange() {
+    localStorage.removeItem("user");
     this.props.cookies.remove("token");
   }
 
@@ -52,8 +53,12 @@ class SiteHeader extends React.Component {
                 }}
               >
                 <button className="btn">
-                  <i className="fas fa-sign-out-alt"> Logout</i>
+                  <i className="fas fa-sign-out-alt"></i>
                 </button>
+
+                {/* <button className="btn">
+                  <i className="fas fa-sign-out-alt"> Logout</i>
+                </button> */}
               </Link>
             )}
           </ul>

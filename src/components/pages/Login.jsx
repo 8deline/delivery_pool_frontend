@@ -49,6 +49,8 @@ class Login extends React.Component {
           return;
         }
 
+        localStorage.setItem("user", JSON.stringify(response.data.info));
+
         this.props.cookies.set("token", response.data.token, {
           path: "/",
           expires: moment.unix(response.data.expiresAt).toDate(),
