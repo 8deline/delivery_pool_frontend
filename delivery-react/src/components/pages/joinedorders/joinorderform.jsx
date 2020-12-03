@@ -19,10 +19,16 @@ class JoinOrderForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault()
-        axios.post('http://localhost:5000/', qs.stringify(this.state), 
+        console.log(this.state.orderitem)
+        axios.post(`http://localhost:5000/api/v1/users/joinorder/${this.state.orderdetails._id}`, qs.stringify(this.state), 
         
         {headers: {'auth_token': this.props.cookies.get('token')}})
-        this.props.history.push('/users/dashboard')
+        .then(response=>{
+    
+            this.props.history.push('/users/dashboard')
+        })
+        .catch(err=>{console.log(err)})
+        
     }
 
 
@@ -39,7 +45,7 @@ class JoinOrderForm extends React.Component {
                 <p>Delivery time (mins): {this.state.orderdetails.deliveryTimeEst}</p>
                 <p>Delivery fee ($): {this.state.orderdetails.deliveryFee}</p>
                 <p>Meetup Point: {this.state.orderdetails.meetupPoint}</p>
-                <form onSubmit={e=>{this.state.handleSubmit(e)}}>
+                <form onSubmit={e=>{this.handleSubmit(e)}}>
                     <div class="form-group">
                     <label for="order">Your order</label>
                     <textarea class="form-control" id="order" name="order" onChange={e=>{this.handleChange(e)}} value={this.state.orderitem} />
