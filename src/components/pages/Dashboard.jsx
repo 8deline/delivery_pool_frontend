@@ -320,6 +320,10 @@ class Dashboard extends React.Component {
             )}
           </div>
         </div>
+        <div>
+          <p>Could not find your desired orders?</p>
+          <Link to="/users/newOrder">Create your own</Link>
+        </div>
       </div>
     );
   }
