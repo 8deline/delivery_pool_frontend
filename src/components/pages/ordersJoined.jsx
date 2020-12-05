@@ -60,7 +60,7 @@ class ordersJoined extends React.Component {
                   </div>
                   <Link
                     to={{
-                      pathname: `/orders/joinorder/${item._id}`,
+                      pathname: `/orders/joinorder/edit/${item._id}`,
                       state: {
                         ordersJoined: item,
                       },

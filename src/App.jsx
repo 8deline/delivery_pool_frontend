@@ -13,6 +13,7 @@ import OrdersJoined from "./components/pages/ordersJoined";
 import OrdersCreated from "./components/pages/ordersCreated";
 import createdorder from "./components/pages/createdorders/createdorder";
 import joinedorderform from "./components/pages/joinedorders/joinorderform";
+import editjoinedorderform from "./components/pages/joinedorders/editjoinorder";
 import "./App.scss";
 
 class App extends React.Component {
@@ -38,9 +39,14 @@ class App extends React.Component {
               component={createdorder}
             />
             <ProtectedRoute
+              path="/orders/joinorder/edit/:_id"
+              component={editjoinedorderform}
+            />
+            <ProtectedRoute
               path="/orders/joinorder/:_id"
               component={joinedorderform}
             />
+
             <ProtectedRoute path="/users/dashboard" component={Dashboard} />
             <ProtectedRoute path="/users/newOrder" component={NewOrderForm} />
             <Route path="/" component={Index} />
