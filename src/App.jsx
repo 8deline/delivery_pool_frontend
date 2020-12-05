@@ -8,10 +8,11 @@ import Dashboard from "./components/pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GuestRoute from "./components/GuestRoute";
 import NewOrderForm from "./components/pages/newOrderForm";
-import OrderDetails from "./components/pages/orderDetails";
+// import OrderDetails from "./components/pages/orderDetails";
 import OrdersJoined from "./components/pages/ordersJoined";
 import OrdersCreated from "./components/pages/ordersCreated";
 import createdorder from "./components/pages/createdorders/createdorder";
+import joinedorderform from "./components/pages/joinedorders/joinorderform";
 import "./App.scss";
 
 class App extends React.Component {
@@ -23,7 +24,7 @@ class App extends React.Component {
           <Switch>
             <GuestRoute path="/users/register" component={Register} />
             <GuestRoute path="/users/login" component={Login} />
-            <Route path="/orders/:id" component={OrderDetails} />
+            {/* <Route path="/orders/:id" component={OrderDetails} /> */}
             <Route
               path="/users/dashboard/ordersJoined"
               component={OrdersJoined}
@@ -35,6 +36,10 @@ class App extends React.Component {
             <ProtectedRoute
               path="/users/allOrder/:_id"
               component={createdorder}
+            />
+            <ProtectedRoute
+              path="/orders/joinorder/:_id"
+              component={joinedorderform}
             />
             <ProtectedRoute path="/users/dashboard" component={Dashboard} />
             <ProtectedRoute path="/users/newOrder" component={NewOrderForm} />

@@ -163,14 +163,17 @@ class Dashboard extends React.Component {
                           </span>
                           <Link
                             to={{
-                              pathname: `/orders/${item._id}`,
+                              pathname: `/orders/joinorder/${item._id}`,
+                              state: {
+                                location: item,
+                              },
                             }}
                           >
                             <div className="lets-join-btn">
                               <button className="btn btn-primary">
                                 <i className="fas fa-info-circle">
                                   {" "}
-                                  See Order Details
+                                  Join the Orders
                                 </i>
                               </button>
                             </div>
