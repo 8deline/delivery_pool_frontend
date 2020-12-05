@@ -13,6 +13,7 @@ import Register from './components/pages/Register'
 import showPendingOrders from './components/pages/createdorders/showPendingOrders'
 import createdorder from './components/pages/createdorders/createdorder'
 import joinorderform from './components/pages/joinedorders/joinorderform'
+import editjoinorderform from './components/pages/joinedorders/editjoinorder'
 
 class App extends React.Component{
 
@@ -27,7 +28,10 @@ class App extends React.Component{
           <ProtectedRoute path="/users/newOrder" component= {NewOrderForm} />
           <ProtectedRoute path="/users/allOrder/:_id" component= {createdorder} />
           <ProtectedRoute path="/users/allOrder" component= {showPendingOrders}  />
+          <ProtectedRoute path="/orders/joinorder/edit/:_id" component= {editjoinorderform} />
           <ProtectedRoute path="/orders/joinorder/:_id" component= {joinorderform} />
+          
+          
           
         </Switch>
       </Router>
