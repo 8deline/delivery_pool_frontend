@@ -58,12 +58,13 @@ class ordersCreated extends React.Component {
                   </div>
                   <Link
                     to={{
-                      pathname: `/orders/${item._id}`,
+                      pathname: `/users/allOrder/${item._id}`,
+                      state: { ordersCreated: item },
                     }}
                   >
                     <div className="lets-join-btn">
                       <button className="btn btn-primary">
-                        <i className="fas fa-info-circle"> See Order Details</i>
+                        <i className="fas fa-info-circle"> Edit Your Orders</i>
                       </button>
                     </div>
                   </Link>

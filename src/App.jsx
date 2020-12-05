@@ -11,6 +11,7 @@ import NewOrderForm from "./components/pages/newOrderForm";
 import OrderDetails from "./components/pages/orderDetails";
 import OrdersJoined from "./components/pages/ordersJoined";
 import OrdersCreated from "./components/pages/ordersCreated";
+import createdorder from "./components/pages/createdorders/createdorder";
 import "./App.scss";
 
 class App extends React.Component {
@@ -30,6 +31,10 @@ class App extends React.Component {
             <Route
               path="/users/dashboard/ordersCreated"
               component={OrdersCreated}
+            />
+            <ProtectedRoute
+              path="/users/allOrder/:_id"
+              component={createdorder}
             />
             <ProtectedRoute path="/users/dashboard" component={Dashboard} />
             <ProtectedRoute path="/users/newOrder" component={NewOrderForm} />
