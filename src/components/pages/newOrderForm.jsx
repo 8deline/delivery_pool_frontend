@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { withCookies } from "react-cookie";
 import qs from "qs";
+import { withRouter } from "react-router";
 
 class NewOrderForm extends React.Component {
   constructor(props) {
@@ -16,7 +17,18 @@ class NewOrderForm extends React.Component {
     };
   }
 
-  
+  componentDidMount(){
+    console.log('test')
+        
+    if (this.props.location.state && this.props.location.state.address) {
+        this.setState({
+            meetupPoint: this.props.location.state.address
+        })
+        return
+    }
+    
+     } 
+
 
   handleChange(e) {
     e.preventDefault();
@@ -44,7 +56,7 @@ class NewOrderForm extends React.Component {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           meetupPoint: "",
           restaurant: "",
@@ -163,4 +175,4 @@ class NewOrderForm extends React.Component {
   }
 }
 
-export default withCookies(NewOrderForm);
+export default withRouter(withCookies(NewOrderForm));
