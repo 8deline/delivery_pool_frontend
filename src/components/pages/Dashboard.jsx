@@ -7,6 +7,7 @@ import "./Dashboard.scss";
 // import DashboardHeader from "./DashboradHeader";
 import OrdersCreated from "./ordersCreated";
 import OrdersJoined from "./ordersJoined";
+import CreateOrderButton from "./createOrderButton"
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -195,7 +196,8 @@ class Dashboard extends React.Component {
           )}
           <div className="create-order-section">
             <h1>Could not find your desired orders?</h1>
-            <Link to="/users/newOrder">Create your own</Link>
+            < CreateOrderButton />
+            {/* <Link to="/users/newOrder">Create your own</Link> */}
           </div>
         </div>
       </div>
