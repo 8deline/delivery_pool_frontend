@@ -24,7 +24,8 @@ class App extends React.Component{
         <Switch>
         <GuestRoute path="/users/register" component={Register} />
             <GuestRoute path="/users/login" component={Login} />
-          <ProtectedRoute path="/users/dashboard" component={Dashboard} />
+          <ProtectedRoute path ="/users/createorderbutton" component={CreateNewOrder} />
+            <ProtectedRoute path="/users/dashboard" component={Dashboard} />
           <ProtectedRoute path="/users/newOrder" component= {NewOrderForm} />
           <ProtectedRoute path="/users/allOrder/:_id" component= {createdorder} />
           <ProtectedRoute path="/users/allOrder" component= {showPendingOrders}  />
