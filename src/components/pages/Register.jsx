@@ -3,6 +3,8 @@ import { withCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
+import "./register.scss";
+
 
 class Register extends React.Component {
   constructor(props) {
@@ -89,15 +91,25 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className="page-register">
+
+      <div className="register-page">
+              <div
+        className="home-page-first-section"
+        style={{ backgroundImage: "url(/img/register-page-background.jpeg)" }}
+      >
         <div className="container">
+        <div className="img-overlay">
+        <p className="home-page-first-para">Hello there!</p>
+              <p className="home-page-second-para">
+                Let's register you!</p>
           <form
             className="mt-5 mb-5"
             onSubmit={(e) => {
               this.handleFormSubmission(e);
             }}
           >
-            <div className="form-group">
+          <div className="row">
+            <div className="form-group col-4">
               <label htmlFor="InputFirstName">First Name</label>
               <input
                 type="text"
@@ -109,7 +121,7 @@ class Register extends React.Component {
                 aria-describedby="FirstNamelHelp"
               />
             </div>
-            <div className="form-group">
+            <div className="form-group col-4">
               <label htmlFor="InputFirstName">Last Name</label>
               <input
                 type="text"
@@ -121,7 +133,7 @@ class Register extends React.Component {
                 aria-describedby="LastNamelHelp"
               />
             </div>
-            <div className="form-group">
+            <div className="form-group col-4">
               <label htmlFor="InputUserID">User ID</label>
               <input
                 type="text"
@@ -133,21 +145,9 @@ class Register extends React.Component {
                 aria-describedby="UserIDlHelp"
               />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="InputContactNumber">Contact number</label>
-              <input
-                type="text"
-                onChange={(e) => {
-                  this.handleContactNumberChange(e);
-                }}
-                className="form-control"
-                id="InputContactnumber"
-                aria-describedby="ContactNumberHelp"
-              />
             </div>
-
-            <div className="form-group">
+            <div className="row">
+            <div className="form-group col-8">
               <label htmlFor="InputEmail1">Email Address</label>
               <input
                 type="email"
@@ -159,7 +159,7 @@ class Register extends React.Component {
                 aria-describedby="emailHelp"
               />
             </div>
-            <div className="form-group">
+            <div className="form-group col-4">
               <label htmlFor="exampleInputPassword1">Password</label>
               <input
                 type="password"
@@ -170,7 +170,9 @@ class Register extends React.Component {
                 id="InputPassword"
               />
             </div>
-            <div className="form-group">
+            </div>
+            <div className="row">
+            <div className="form-group col-8">
               <label htmlFor="InputDefaultAddress">Address (Default)</label>
               <input
                 type="text"
@@ -182,6 +184,22 @@ class Register extends React.Component {
                 aria-describedby="DefaultAddresslHelp"
               />
             </div>
+            <div className="form-group col-4">
+              <label htmlFor="InputContactNumber">Contact number</label>
+              <input
+                type="text"
+                onChange={(e) => {
+                  this.handleContactNumberChange(e);
+                }}
+                className="form-control"
+                id="InputContactnumber"
+                aria-describedby="ContactNumberHelp"
+              />
+            </div>
+            
+            </div>
+            
+            
             {this.state.formErr !== "" ? (
               <div className="form-group">
                 <p>{this.state.formErr}</p>
@@ -189,11 +207,13 @@ class Register extends React.Component {
             ) : (
               ""
             )}
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-outline-success my-2 my-sm-0 search-btn">
               Register
             </button>
           </form>
         </div>
+      </div>
+      </div>
       </div>
     );
   }

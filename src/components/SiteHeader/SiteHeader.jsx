@@ -34,15 +34,26 @@ class SiteHeader extends React.Component {
           <ul className="nav ml-auto">
             <Link className="nav-link" to="/users/dashboard">
               <button className="btn">
-                <i className="fas fa-shopping-bag"> Your order</i>
+                <i className="fas fa-shopping-bag"> Your orders</i>
               </button>
             </Link>
             {!this.isAuthenticated() ? (
+              <ul className="nav ml-auto">
+                <li>
               <Link className="nav-link" to="/users/login">
                 <button className="btn">
-                  <i className="fas fa-user-shield"> Login</i>
+                  <i className="fas fa-user-shield">Login</i>
                 </button>
               </Link>
+              </li>
+              <li>
+              <Link className="nav-link" to="/users/register">
+              <button className="btn">
+                <i className="fas fa-user-shield">Register</i>
+              </button>
+            </Link>
+            </li>
+              </ul>
             ) : (
               <Link
                 className="nav-link"
