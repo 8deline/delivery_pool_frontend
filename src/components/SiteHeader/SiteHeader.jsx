@@ -15,7 +15,12 @@ class SiteHeader extends React.Component {
     return true;
   }
 
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem("user"));
+  }
+
   handleLogoutChange() {
+    localStorage.removeItem("user");
     this.props.cookies.remove("token");
   }
 
@@ -37,24 +42,37 @@ class SiteHeader extends React.Component {
                 <i className="fas fa-shopping-bag"> Your order</i>
               </button>
             </Link>
-            {!this.isAuthenticated() ? (
+            {!this.isAuthenticated() && !this.getCurrentUser() ? (
               <Link className="nav-link" to="/users/login">
                 <button className="btn">
                   <i className="fas fa-user-shield"> Login</i>
                 </button>
               </Link>
             ) : (
-              <Link
-                className="nav-link"
-                to="/"
-                onClick={(e) => {
-                  this.handleLogoutChange();
-                }}
-              >
-                <button className="btn">
-                  <i className="fas fa-sign-out-alt"> Logout</i>
+              <div className="dropdown nav-link">
+                <button
+                  className="btn dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  data-hover="dropdown"
+                >
+                  <i className="fas fa-user">
+                    {" "}
+                    {this.getCurrentUser().user_id}
+                  </i>
                 </button>
-              </Link>
+                <div className="dropdown-menu">
+                  <Link
+                    className="nav-link dropdown-item"
+                    to="/"
+                    onClick={(e) => {
+                      this.handleLogoutChange();
+                    }}
+                  >
+                    Logout
+                  </Link>
+                </div>
+              </div>
             )}
           </ul>
         </div>

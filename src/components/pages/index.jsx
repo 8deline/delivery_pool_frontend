@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import qs from "qs";
-
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { withCookies } from "react-cookie";
 // import Service from "../../services/delivery_pool";
 import "./index.scss";
 
@@ -13,6 +13,16 @@ class Index extends React.Component {
       address: "",
       location: "",
     };
+  }
+
+  isAuthenticated() {
+    const token = this.props.cookies.get("token");
+
+    if (!token || token === "undefined" || token === "null") {
+      return false;
+    }
+
+    return true;
   }
 
   handleSubmit(e) {
@@ -30,7 +40,6 @@ class Index extends React.Component {
         });
         const element = document.querySelector(".home-page-second-section");
         window.scrollBy(0, element.offsetTop);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -41,7 +50,6 @@ class Index extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.name);
   }
 
   // componentDidMount() {
@@ -49,7 +57,7 @@ class Index extends React.Component {
   // }
 
   // getLocation() {
-  //   Service.location()
+  //   axios
   //     .then((response) => {
   //       this.setState({
   //         location: response.data,
@@ -111,17 +119,14 @@ class Index extends React.Component {
                     return (
                       <div className="col-4" key={item._id}>
                         <div className="users-near-you">
-                          <figure>
-                            <img
-                              src="https://via.placeholder.com/300"
-                              alt="img"
-                            />
-                          </figure>
-                          <div className="">{item.name}</div>
-                          <div>Restaurant Name</div>
+                          <div className="restaurant">{item.restaurant}</div>
                           <div>
-                            <i className="fas fa-dollar-sign"></i>
-                            Delivery Fee
+                            Total: <strong>${item.deliveryFee}</strong>
+                            <span className="delivery-fee"> delivery fee</span>
+                          </div>
+                          <div>
+                            No. of pax:
+                            <strong> {item.usersjoined.length}</strong>
                           </div>
                           <span className="dis">
                             <i className="fas fa-people-arrows"></i>
@@ -129,8 +134,38 @@ class Index extends React.Component {
                           </span>
                           <span className="time">
                             <i className="fas fa-clock"></i>
-                            <span> 30min</span>
+                            <span> {item.deliveryTimeEst} min</span>
                           </span>
+                          {this.isAuthenticated() ? (
+                            <Link
+                              to={{
+                                pathname: `/orders/${item._id}`,
+                                state: {
+                                  location: item,
+                                },
+                              }}
+                            >
+                              <div className="lets-join-btn">
+                                <button className="btn btn-primary">
+                                  <i className="fas fa-info-circle">
+                                    {" "}
+                                    See Order Details
+                                  </i>
+                                </button>
+                              </div>
+                            </Link>
+                          ) : (
+                            <Link to="/users/login">
+                              <div className="lets-join-btn">
+                                <button className="btn btn-primary">
+                                  <i className="fas fa-info-circle">
+                                    {" "}
+                                    See Order Details
+                                  </i>
+                                </button>
+                              </div>
+                            </Link>
+                          )}
                         </div>
                       </div>
                     );
@@ -149,4 +184,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default withCookies(Index);
