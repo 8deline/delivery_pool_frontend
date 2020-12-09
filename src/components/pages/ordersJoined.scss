@@ -1,0 +1,53 @@
+.orders-joined-section {
+  .orders-joined-section-heading {
+    margin-bottom: 3%;
+  }
+
+  .row {
+    .col-sm-4 {
+      text-align: left;
+
+      .card {
+        border-radius: 20px;
+        background-color: #e899dc;
+        background-image: linear-gradient(315deg, #e899dc 0%, #d387ab 74%);
+        margin-bottom: 10%;
+
+        .restaurant {
+          font-size: 26px;
+        }
+
+        .created-by-user {
+          margin-top: 3%;
+        }
+
+        .delivery-fee {
+          margin-top: 3%;
+        }
+
+        .edit-btn {
+          margin-top: 5%;
+          text-align: center;
+
+          .btn {
+            color: white;
+            background-color: #6b0f1a;
+            background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+          }
+        }
+
+        .no-of-pax {
+          margin-top: 3%;
+        }
+
+        .meetupPoint {
+          margin-top: 3%;
+        }
+
+        .time {
+          margin-top: 3%;
+        }
+      }
+    }
+  }
+}

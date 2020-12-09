@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { withCookies } from "react-cookie";
+import "./ordersJoined.scss";
 
 class ordersJoined extends React.Component {
   constructor(props) {
@@ -35,43 +36,50 @@ class ordersJoined extends React.Component {
   render() {
     return (
       <div className="orders-joined-section">
-        <h1>Orders Joined</h1>
+        <h1 className="orders-joined-section-heading">Orders Joined</h1>
         <div className="row">
           {this.state.ordersJoined.length > 0 ? (
             this.state.ordersJoined.map((item) => {
               return (
-                <div className="col-4" key={item._id}>
-                  <div className="restaurant">{item.restaurant}</div>
-                  <div>Created by: {item.userid}</div>
-                  <div>
-                    Total: <strong>${item.deliveryFee}</strong>
-                    <span className="delivery-fee"> delivery fee</span>
-                  </div>
-                  <div>
-                    No. of pax:
-                    <strong> {item.usersjoined.length + 1} (currently)</strong>
-                  </div>
-                  <span className="meetupPoint">
-                    <span> MeetUp Point: {item.meetupPoint} </span>
-                  </span>
-                  <div className="time">
-                    <i className="fas fa-clock"></i>
-                    <span> {item.deliveryTimeEst} min</span>
-                  </div>
-                  <Link
-                    to={{
-                      pathname: `/orders/joinorder/edit/${item._id}`,
-                      state: {
-                        ordersJoined: item,
-                      },
-                    }}
-                  >
-                    <div className="lets-join-btn">
-                      <button className="btn btn-primary">
-                        <i className="fas fa-info-circle"> Edit the Orders</i>
-                      </button>
+                <div className="col-sm-4" key={item._id}>
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="restaurant">
+                        <strong>{item.restaurant}</strong>
+                      </div>
+                      <div className="created-by-user">
+                        <strong>Created by:</strong> <i>{item.userid}</i>
+                      </div>
+                      <div className="delivery-fee">
+                        <strong>Delivery fee: </strong>
+                        <i>${item.deliveryFee}</i>
+                      </div>
+                      <div className="no-of-pax">
+                        <strong>No. of pax:</strong>{" "}
+                        <i>{item.usersjoined.length + 1} (currently)</i>
+                      </div>
+                      <div className="meetupPoint">
+                        <strong>*MeetUp Point*</strong> <br />
+                        {item.meetupPoint}
+                      </div>
+                      <div className="time">
+                        <i className="fas fa-clock"></i>
+                        <span> {item.deliveryTimeEst} min</span>
+                      </div>
+                      <Link
+                        to={{
+                          pathname: `/orders/joinorder/edit/${item._id}`,
+                          state: {
+                            ordersJoined: item,
+                          },
+                        }}
+                      >
+                        <div className="edit-btn">
+                          <button className="btn">Edit Your Order</button>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
                 </div>
               );
             })
