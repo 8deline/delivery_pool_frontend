@@ -136,7 +136,7 @@ class Dashboard extends React.Component {
                     }}
                   /> */}
 
-<GooglePlacesAutocomplete apiKey= 'AIzaSyBkcQ2JKuV_kxI9zBn-yHYzLV_50OJ6oms' className="form-control location-input" style={{width: "300px"}} autocompletionRequest={{
+<GooglePlacesAutocomplete apiKey= 'AIzaSyBkcQ2JKuV_kxI9zBn-yHYzLV_50OJ6oms' className="form-control location-input" classNamePrefix="form-control location-input"  autocompletionRequest={{
                   bounds: [
                     { lat: 50, lng: 50 },
                     { lat: 100, lng: 100 }

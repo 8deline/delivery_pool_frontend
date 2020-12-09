@@ -51,6 +51,11 @@ class NewOrderForm extends React.Component {
     //   }
     // }
 
+    handleAddressChange(e) {
+      this.setState({meetupPoint: e.label})
+    }
+
+
   handleChange(e) {
     // e.preventDefault();
     this.setState({
@@ -180,7 +185,7 @@ class NewOrderForm extends React.Component {
                   country: ['sg'],
                   }
                  
-                }} selectProps= {{value:{ label: meetupPoint, value: meetupPoint}, onChange:this.handleAddressChange}}/> 
+                }} selectProps= {{value: {label: this.state.meetupPoint, value: this.state.meetupPoint}, onChange: (e=> this.handleAddressChange(e))}} /> 
   
             </div>
 
@@ -202,7 +207,7 @@ class NewOrderForm extends React.Component {
 
             <button type="submit" className="btn btn-primary">
               Submit
-            </button>
+            </button>=
           </form>
         </div>
       </div>
