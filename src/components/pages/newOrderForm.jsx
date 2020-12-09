@@ -3,6 +3,7 @@ import axios from "axios";
 import { withCookies } from "react-cookie";
 import qs from "qs";
 import { withRouter } from "react-router";
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 class NewOrderForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class NewOrderForm extends React.Component {
   }
 
   componentDidMount(){
-    console.log('test')
         
     if (this.props.location.state && this.props.location.state.address) {
         this.setState({
@@ -30,8 +30,29 @@ class NewOrderForm extends React.Component {
      } 
 
 
+    // handleAddressChange = (meetupPoint, { action }) => {
+    //   console.log(meetupPoint, action);
+    //   switch (action) {
+    //     case 'input-change':
+    //       this.setState({ meetupPoint });
+    //       return;
+    //     case 'menu-close':
+    //       console.log(this.state.meetupPoint);
+    //       let menuIsOpen = undefined;
+    //       if (this.state.meetupPoint) {
+    //         menuIsOpen = true;
+    //       }
+    //       this.setState({
+    //         menuIsOpen
+    //       });
+    //       return;
+    //     default:
+    //       return;
+    //   }
+    // }
+
   handleChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -71,9 +92,11 @@ class NewOrderForm extends React.Component {
   }
 
   render() {
+    const { meetupPoint} = this.state.meetupPoint 
     return (
       <div>
         <div>
+        
           <form
             onSubmit={(e) => {
               this.handleSubmit(e);
@@ -135,7 +158,7 @@ class NewOrderForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="meetupPoint">Meetup Point (required)</label>
-              <input
+              <input 
                 type="text"
                 className="form-control"
                 id="meetupPoint"
@@ -147,6 +170,18 @@ class NewOrderForm extends React.Component {
                 }}
                 required
               />
+                        
+ <GooglePlacesAutocomplete apiKey= 'AIzaSyBkcQ2JKuV_kxI9zBn-yHYzLV_50OJ6oms' autocompletionRequest={{
+                  bounds: [
+                    { lat: 50, lng: 50 },
+                    { lat: 100, lng: 100 }
+                  ],
+                  componentRestrictions: {
+                  country: ['sg'],
+                  }
+                 
+                }} selectProps= {{value:{ label: meetupPoint, value: meetupPoint}, onChange:this.handleAddressChange}}/> 
+  
             </div>
 
             <div className="form-group">

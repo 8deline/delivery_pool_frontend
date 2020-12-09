@@ -8,6 +8,7 @@ import "./Dashboard.scss";
 import OrdersCreated from "./ordersCreated";
 import OrdersJoined from "./ordersJoined";
 import CreateOrderButton from "./createOrderButton"
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -95,6 +96,11 @@ class Dashboard extends React.Component {
     });
   }
 
+  handleAddressChange(e) {
+    console.log(e.label)
+    console.log(e.value)
+  }
+
   render() {
     return (
       <div className="page-dashboard">
@@ -111,6 +117,8 @@ class Dashboard extends React.Component {
           {/* <Link to="/users/dashboard/ordersJoined" />
           <Link to={"/users/dashboard/ordersCreated"} /> */}
           {/* <Route path="/orders/:id" component={OrderDetails} /> */}
+
+          
           <OrdersCreated />
           <OrdersJoined />
           {this.state.location !== "" ? (
@@ -118,7 +126,7 @@ class Dashboard extends React.Component {
               <div>
                 <h1>Someone Near You</h1>
                 <form className="form-inline my-2 my-lg-0 home-page-form">
-                  <input
+                  {/* <input
                     className="form-control location-input"
                     type="text"
                     placeholder="Enter your location"
@@ -126,7 +134,19 @@ class Dashboard extends React.Component {
                     onChange={(e) => {
                       this.handleChange(e);
                     }}
-                  />
+                  /> */}
+
+<GooglePlacesAutocomplete apiKey= 'AIzaSyBkcQ2JKuV_kxI9zBn-yHYzLV_50OJ6oms' className="form-control location-input" style={{width: "300px"}} autocompletionRequest={{
+                  bounds: [
+                    { lat: 50, lng: 50 },
+                    { lat: 100, lng: 100 }
+                  ],
+                  componentRestrictions: {
+                  country: ['sg'],
+                  }
+                 
+                }} selectProps= {{value:{ label: "Enter your location", value: "One"}, onChange: (e) => {this.handleAddressChange(e)}}} /> 
+
                   <div
                     onClick={(e) => {
                       this.handleSubmit(e);
