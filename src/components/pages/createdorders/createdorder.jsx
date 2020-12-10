@@ -7,9 +7,10 @@ import qs from "qs";
 class CreatedOrder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { order: "", orderitem: "" };
+    this.state = { order: "", orderitem: "", isFulfilled: false };
   }
 
+ 
   componentDidMount() {
     if (this.props.location.state && this.props.location.state.ordersCreated) {
       const currentprop = this.props.location.state.ordersCreated;
@@ -28,6 +29,21 @@ class CreatedOrder extends React.Component {
     // console.log(this.props.location)
     // console.log(this.state.order)
   }
+
+  handleClick(e) {
+     axios.post(`http://localhost:5000/api/v1/users/fulfillorder/${this.state.order._id}`, qs.stringify(this.state.isFulfilled),
+     {
+      headers: {
+        auth_token: this.props.cookies.get("token"),
+      },
+    })
+    .then((response)=> {this.setState(prevState =>({isFulfilled: !prevState.isFulfilled}))
+    console.log('fulfilled route working')
+  })
+    .catch(err=> console.log(err))
+    
+}
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -104,6 +120,13 @@ class CreatedOrder extends React.Component {
             })}
           </div>
         )}
+
+                {this.state.isFulfilled? (<button type="button" class="btn btn-secondary btn-lg" disabled>Order completed</button>): 
+                <button type="button" class="btn btn-primary" onClick= {e => {this.handleClick(e)}}>Confirm order</button>
+                
+                }
+                
+            
       </div>
     );
   }

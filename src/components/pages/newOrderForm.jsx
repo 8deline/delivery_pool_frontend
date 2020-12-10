@@ -176,7 +176,7 @@ class NewOrderForm extends React.Component {
                 required
               />
                         
- <GooglePlacesAutocomplete apiKey= 'AIzaSyBkcQ2JKuV_kxI9zBn-yHYzLV_50OJ6oms' autocompletionRequest={{
+ <GooglePlacesAutocomplete apiKey= {process.env.API_KEY} autocompletionRequest={{
                   bounds: [
                     { lat: 50, lng: 50 },
                     { lat: 100, lng: 100 }
@@ -207,7 +207,7 @@ class NewOrderForm extends React.Component {
 
             <button type="submit" className="btn btn-primary">
               Submit
-            </button>=
+            </button>
           </form>
         </div>
       </div>

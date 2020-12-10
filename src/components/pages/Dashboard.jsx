@@ -8,7 +8,7 @@ import "./Dashboard.scss";
 import OrdersCreated from "./ordersCreated";
 import OrdersJoined from "./ordersJoined";
 import CreateOrderButton from "./createOrderButton"
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+//import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -126,7 +126,7 @@ class Dashboard extends React.Component {
               <div>
                 <h1>Someone Near You</h1>
                 <form className="form-inline my-2 my-lg-0 home-page-form">
-                  {/* <input
+                  <input
                     className="form-control location-input"
                     type="text"
                     placeholder="Enter your location"
@@ -134,9 +134,9 @@ class Dashboard extends React.Component {
                     onChange={(e) => {
                       this.handleChange(e);
                     }}
-                  /> */}
+                  />
 
-<GooglePlacesAutocomplete apiKey= 'AIzaSyBkcQ2JKuV_kxI9zBn-yHYzLV_50OJ6oms' className="form-control location-input" classNamePrefix="form-control location-input"  autocompletionRequest={{
+{/* <GooglePlacesAutocomplete apiKey= ${process.env.API_KEY} className="form-control location-input" classNamePrefix="form-control location-input"  autocompletionRequest={{
                   bounds: [
                     { lat: 50, lng: 50 },
                     { lat: 100, lng: 100 }
@@ -145,7 +145,7 @@ class Dashboard extends React.Component {
                   country: ['sg'],
                   }
                  
-                }} selectProps= {{value:{ label: "Enter your location", value: "One"}, onChange: (e) => {this.handleAddressChange(e)}}} /> 
+                }} selectProps= {{value:{ label: "Enter your location", value: "One"}, onChange: (e) => {this.handleAddressChange(e)}}} />  */}
 
                   <div
                     onClick={(e) => {
