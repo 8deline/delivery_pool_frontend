@@ -90,6 +90,7 @@ class Index extends React.Component {
                     type="text"
                     placeholder="Enter your location"
                     name="address"
+                    required
                     onChange={(e) => {
                       this.handleChange(e);
                     }}

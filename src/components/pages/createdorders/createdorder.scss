@@ -22,7 +22,8 @@ $font-color: #2a293e;
 
 .createdorder {
   background: $form-bg;
-  padding: 50px 100px;
+
+  padding: 50px 100px 200px;
   border-top: 10px solid $form-border;
 }
 
@@ -56,4 +57,9 @@ $font-color: #2a293e;
   -webkit-text-fill-color: $font-color;
   -webkit-box-shadow: 0 0 0px 1000px $form-bg inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+button {
+  margin-right: 10px;
+  text-align: center;
 }

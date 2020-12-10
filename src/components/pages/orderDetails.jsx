@@ -41,10 +41,12 @@ class orderDetails extends React.Component {
   render() {
     return (
       <div>
+        
         {this.isAuthenticated() ? (
           <div>
             {this.state.order ? (
               <div>
+                <h2>Order Details</h2>
                 <div>{this.state.order.deliveryFee}</div>
                 <div>{this.state.order.meetupPoint}</div>
                 <Link to="/users/dashboard">

@@ -113,6 +113,10 @@ class CreatedOrder extends React.Component {
                   <button type="submit" class="btn btn-outline-success">
                     Edit
                   </button>
+                  {this.state.isFulfilled? (<button type="button" class="btn btn-secondary btn-lg" disabled>Order completed</button>): 
+                <button type="button" class="btn btn-outline-success" onClick= {e => {this.handleClick(e)}}>Confirm order</button>
+                
+                }
                 </form>
               ) : (
                 <p>
@@ -123,10 +127,7 @@ class CreatedOrder extends React.Component {
             })}
           </div>
 
-                {this.state.isFulfilled? (<button type="button" class="btn btn-secondary btn-lg" disabled>Order completed</button>): 
-                <button type="button" class="btn btn-primary" onClick= {e => {this.handleClick(e)}}>Confirm order</button>
                 
-                }
                 
             
       </div>

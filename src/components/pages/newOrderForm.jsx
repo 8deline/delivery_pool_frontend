@@ -182,7 +182,7 @@ class NewOrderForm extends React.Component {
                 required
               />
                         
- <GooglePlacesAutocomplete apiKey= {process.env.API_KEY} autocompletionRequest={{
+ {/* <GooglePlacesAutocomplete apiKey= {process.env.API_KEY} autocompletionRequest={{
                   bounds: [
                     { lat: 50, lng: 50 },
                     { lat: 100, lng: 100 }
@@ -191,7 +191,7 @@ class NewOrderForm extends React.Component {
                   country: ['sg'],
                   }
                  
-                }} selectProps= {{value: {label: this.state.meetupPoint, value: this.state.meetupPoint}, onChange: (e=> this.handleAddressChange(e))}} /> 
+                }} selectProps= {{value: {label: this.state.meetupPoint, value: this.state.meetupPoint}, onChange: (e=> this.handleAddressChange(e))}} />  */}
   
             </div>
 
