@@ -3,6 +3,8 @@ import axios from "axios";
 import qs from "qs";
 import { withCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
+import "./joinorderform.scss";
+
 
 class JoinOrderForm extends React.Component {
   constructor(props) {
@@ -42,7 +44,8 @@ class JoinOrderForm extends React.Component {
     return (
       <div>
         {this.state.orderdetails ? (
-          <div>
+          <div className="joinedorderform-page">
+          <div className="joinedorderform container">
             <p>Restaurant: {this.state.orderdetails.restaurant}</p>
             <p>
               Delivery time (mins): {this.state.orderdetails.deliveryTimeEst}
@@ -66,10 +69,11 @@ class JoinOrderForm extends React.Component {
                   value={this.state.orderitem}
                 />
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-outline-success">
                 Add order
               </button>
             </form>
+          </div>
           </div>
         ) : (
           ""

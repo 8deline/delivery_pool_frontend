@@ -3,6 +3,7 @@ import axios from "axios";
 import { withCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
 import qs from "qs";
+import "./createdorder.scss";
 
 class CreatedOrder extends React.Component {
   constructor(props) {
@@ -78,7 +79,9 @@ class CreatedOrder extends React.Component {
         {!this.state.order ? (
           ""
         ) : (
-          <div>
+          <div className="createdorder-page">
+          <div className="createdorder container">
+            <h2>Edit your created order</h2>
             <p>Restaurant: {this.state.order.restaurant}</p>
             <p>Delivery time (mins): {this.state.order.deliveryTimeEst}</p>
             <p>Delivery fee ($): {this.state.order.deliveryFee}</p>
@@ -107,7 +110,7 @@ class CreatedOrder extends React.Component {
                       }}
                     />
                   </div>
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-outline-success">
                     Edit
                   </button>
                 </form>
@@ -119,7 +122,6 @@ class CreatedOrder extends React.Component {
               );
             })}
           </div>
-        )}
 
                 {this.state.isFulfilled? (<button type="button" class="btn btn-secondary btn-lg" disabled>Order completed</button>): 
                 <button type="button" class="btn btn-primary" onClick= {e => {this.handleClick(e)}}>Confirm order</button>
@@ -128,7 +130,11 @@ class CreatedOrder extends React.Component {
                 
             
       </div>
-    );
+    )
+  }
+  </div>
+  )
   }
 }
+
 export default withRouter(withCookies(CreatedOrder));

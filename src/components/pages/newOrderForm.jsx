@@ -5,6 +5,9 @@ import qs from "qs";
 import { withRouter } from "react-router";
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
+import "./newOrderForm.scss";
+
+
 class NewOrderForm extends React.Component {
   constructor(props) {
     super(props);
@@ -99,16 +102,17 @@ class NewOrderForm extends React.Component {
   render() {
     const { meetupPoint} = this.state.meetupPoint 
     return (
-      <div>
-        <div>
-        
+      <div className="neworderform-page">
+
+      <div className="neworderform container">
           <form
             onSubmit={(e) => {
               this.handleSubmit(e);
             }}
           >
+            <h2>Create your own Order</h2>
             <div className="form-group">
-              <label htmlFor="restaurant">Restaurant (required)</label>
+              <label htmlFor="restaurant">Restaurant Name *</label>
               <input
                 type="text"
                 className="form-control"
@@ -125,10 +129,11 @@ class NewOrderForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="estDeliveryTime">
-                Estimated delivery time (mins) (required)
+                Estimated Delivery Time (mins) *
               </label>
               <input
                 type="number"
+                min="5"
                 step="1"
                 className="form-control"
                 id="estDeliveryTime"
@@ -144,11 +149,12 @@ class NewOrderForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="estDeliveryFee">
-                Estimated delivery fee (required){" "}
+                Estimated Delivery Fee ($) *{" "}
               </label>
               <input
                 type="number"
-                step=".01"
+                step="0.5"
+                min="1"
                 className="form-control"
                 id="estDeliveryFee"
                 name="estDeliveryFee"
@@ -162,8 +168,8 @@ class NewOrderForm extends React.Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="meetupPoint">Meetup Point (required)</label>
-              <input 
+              <label htmlFor="meetupPoint">Meetup Point *</label>
+              <input
                 type="text"
                 className="form-control"
                 id="meetupPoint"
@@ -190,7 +196,7 @@ class NewOrderForm extends React.Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="order">Your order (required)</label>
+              <label htmlFor="order">Your Order *</label>
               <textarea
                 className="form-control"
                 id="order"
@@ -204,13 +210,15 @@ class NewOrderForm extends React.Component {
                 required
               ></textarea>
             </div>
-
-            <button type="submit" className="btn btn-primary">
+            <p>* marked fields are mandatory</p>
+            <button type="submit" className="btn btn-outline-success">
               Submit
             </button>
+            
           </form>
         </div>
       </div>
+
     );
   }
 }

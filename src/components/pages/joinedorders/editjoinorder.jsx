@@ -3,7 +3,7 @@ import axios from "axios";
 import qs from "qs";
 import { withCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
-
+import "./editjoinorder.scss";
 class EditJoinOrder extends React.Component {
   constructor(props) {
     super(props);
@@ -102,7 +102,9 @@ class EditJoinOrder extends React.Component {
     return (
       <div>
         {this.state.orderdetails ? (
-          <div>
+          <div className = "editjoinorder-page">
+            <div class ="editjoinorder container">
+              <h2> Edit Joined Order</h2>
             <p>Restaurant: {this.state.orderdetails.restaurant}</p>
             <p>
               Delivery time (mins): {this.state.orderdetails.deliveryTimeEst}
@@ -126,10 +128,11 @@ class EditJoinOrder extends React.Component {
                   value={this.state.orderitem}
                 />
               </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-outline-success">
                 Add order
               </button>
             </form>
+          </div>
           </div>
         ) : (
           ""
