@@ -3,8 +3,8 @@ import axios from "axios";
 import { withCookies } from "react-cookie";
 import qs from "qs";
 import { withRouter } from "react-router";
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-
+// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+// import { styles } from 'react-select-bootstrap3';
 import "./newOrderForm.scss";
 
 
@@ -100,7 +100,7 @@ class NewOrderForm extends React.Component {
   }
 
   render() {
-    const { meetupPoint} = this.state.meetupPoint 
+    
     return (
       <div className="neworderform-page">
 
@@ -181,8 +181,8 @@ class NewOrderForm extends React.Component {
                 }}
                 required
               />
-                        
- <GooglePlacesAutocomplete apiKey= {process.env.API_KEY} autocompletionRequest={{
+              {/* <div style={{width: '700px'}}>
+              <GooglePlacesAutocomplete apiKey= {process.env.API_KEY} autocompletionRequest={{
                   bounds: [
                     { lat: 50, lng: 50 },
                     { lat: 100, lng: 100 }
@@ -191,7 +191,10 @@ class NewOrderForm extends React.Component {
                   country: ['sg'],
                   }
                  
-                }} selectProps= {{value: {label: this.state.meetupPoint, value: this.state.meetupPoint}, onChange: (e=> this.handleAddressChange(e))}} /> 
+                }} selectProps= {{value: {label: this.state.meetupPoint, value: this.state.meetupPoint}, styles:{'width':'800px'}, onChange: (e=> this.handleAddressChange(e))}} /> 
+                
+                </div>           */}
+ 
   
             </div>
 
