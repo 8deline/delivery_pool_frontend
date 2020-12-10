@@ -3,7 +3,7 @@ import { withCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-import "./register.scss";
+// import "./register.scss";
 
 class Register extends React.Component {
   constructor(props) {
@@ -90,130 +90,131 @@ class Register extends React.Component {
 
   render() {
     return (
-
       <div className="register-page">
-      <div
-className="home-page-first-section"
-style={{ backgroundImage: "url(/img/register-page-background.jpeg)" }}
->
-<div className="container">
-<div className="img-overlay">
-<p className="home-page-first-para">Hello there!</p>
-      <p className="home-page-second-para">
-        Let's register you!</p>
-  <form
-    className="mt-5 mb-5"
-    onSubmit={(e) => {
-      this.handleFormSubmission(e);
-    }}
-  >
-  <div className="row">
-    <div className="form-group col-4">
-      <label htmlFor="InputFirstName">First Name</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          this.handleFirstNameChange(e);
-        }}
-        className="form-control"
-        id="InputFirstName"
-        aria-describedby="FirstNamelHelp"
-      />
-    </div>
-    <div className="form-group col-4">
-      <label htmlFor="InputFirstName">Last Name</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          this.handleLastNameChange(e);
-        }}
-        className="form-control"
-        id="InputLastName"
-        aria-describedby="LastNamelHelp"
-      />
-    </div>
-    <div className="form-group col-4">
-      <label htmlFor="InputUserID">User ID</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          this.handleUserIDChange(e);
-        }}
-        className="form-control"
-        id="InputUserID"
-        aria-describedby="UserIDlHelp"
-      />
-    </div>
-    </div>
-    <div className="row">
-    <div className="form-group col-8">
-      <label htmlFor="InputEmail1">Email Address</label>
-      <input
-        type="email"
-        onChange={(e) => {
-          this.handleEmailChange(e);
-        }}
-        className="form-control"
-        id="InputEmail"
-        aria-describedby="emailHelp"
-      />
-    </div>
-    <div className="form-group col-4">
-      <label htmlFor="exampleInputPassword1">Password</label>
-      <input
-        type="password"
-        onChange={(e) => {
-          this.handlePasswrdChange(e);
-        }}
-        className="form-control"
-        id="InputPassword"
-      />
-    </div>
-    </div>
-    <div className="row">
-    <div className="form-group col-8">
-      <label htmlFor="InputDefaultAddress">Address (Default)</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          this.handleDefaultAddressChange(e);
-        }}
-        className="form-control"
-        id="InputDefaultAddress"
-        aria-describedby="DefaultAddresslHelp"
-      />
-    </div>
-    <div className="form-group col-4">
-      <label htmlFor="InputContactNumber">Contact number</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          this.handleContactNumberChange(e);
-        }}
-        className="form-control"
-        id="InputContactnumber"
-        aria-describedby="ContactNumberHelp"
-      />
-    </div>
-    
-    </div>
-    
-    
-    {this.state.formErr !== "" ? (
-      <div className="form-group">
-        <p>{this.state.formErr}</p>
+        <div
+          className="home-page-first-section"
+          style={{ backgroundImage: "url(/img/register-page-background.jpeg)" }}
+        >
+          <div className="container">
+            <div className="img-overlay">
+              <p className="home-page-first-para">Hello there!</p>
+              <p className="home-page-second-para">Let's register you!</p>
+              <form
+                className="mt-5 mb-5"
+                onSubmit={(e) => {
+                  this.handleFormSubmission(e);
+                }}
+              >
+                <div className="row">
+                  <div className="form-group col-4">
+                    <label htmlFor="InputFirstName">First Name</label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        this.handleFirstNameChange(e);
+                      }}
+                      className="form-control"
+                      id="InputFirstName"
+                      aria-describedby="FirstNamelHelp"
+                    />
+                  </div>
+                  <div className="form-group col-4">
+                    <label htmlFor="InputFirstName">Last Name</label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        this.handleLastNameChange(e);
+                      }}
+                      className="form-control"
+                      id="InputLastName"
+                      aria-describedby="LastNamelHelp"
+                    />
+                  </div>
+                  <div className="form-group col-4">
+                    <label htmlFor="InputUserID">User ID</label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        this.handleUserIDChange(e);
+                      }}
+                      className="form-control"
+                      id="InputUserID"
+                      aria-describedby="UserIDlHelp"
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="form-group col-8">
+                    <label htmlFor="InputEmail1">Email Address</label>
+                    <input
+                      type="email"
+                      onChange={(e) => {
+                        this.handleEmailChange(e);
+                      }}
+                      className="form-control"
+                      id="InputEmail"
+                      aria-describedby="emailHelp"
+                    />
+                  </div>
+                  <div className="form-group col-4">
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input
+                      type="password"
+                      onChange={(e) => {
+                        this.handlePasswrdChange(e);
+                      }}
+                      className="form-control"
+                      id="InputPassword"
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="form-group col-8">
+                    <label htmlFor="InputDefaultAddress">
+                      Address (Default)
+                    </label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        this.handleDefaultAddressChange(e);
+                      }}
+                      className="form-control"
+                      id="InputDefaultAddress"
+                      aria-describedby="DefaultAddresslHelp"
+                    />
+                  </div>
+                  <div className="form-group col-4">
+                    <label htmlFor="InputContactNumber">Contact number</label>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        this.handleContactNumberChange(e);
+                      }}
+                      className="form-control"
+                      id="InputContactnumber"
+                      aria-describedby="ContactNumberHelp"
+                    />
+                  </div>
+                </div>
+
+                {this.state.formErr !== "" ? (
+                  <div className="form-group">
+                    <p>{this.state.formErr}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
+                <button
+                  type="submit"
+                  className="btn btn-outline-success my-2 my-sm-0 search-btn"
+                >
+                  Register
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    ) : (
-      ""
-    )}
-    <button type="submit" className="btn btn-outline-success my-2 my-sm-0 search-btn">
-      Register
-    </button>
-  </form>
-</div>
-</div>
-</div>
-</div>
 
       //before anubhav code
       // <div className="page-register">

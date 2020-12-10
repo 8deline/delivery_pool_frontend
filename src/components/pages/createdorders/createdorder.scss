@@ -18,6 +18,7 @@ $font-color: #2a293e;
   font-size: $font-size;
   font-family: $font-face;
   color: $font-color;
+  height: calc(100vh - 70px);
 }
 
 .createdorder {
@@ -56,4 +57,9 @@ $font-color: #2a293e;
   -webkit-text-fill-color: $font-color;
   -webkit-box-shadow: 0 0 0px 1000px $form-bg inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.the-btn {
+  margin-top: 5%;
+  text-align: center;
 }

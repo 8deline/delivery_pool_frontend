@@ -11,7 +11,6 @@ class CreatedOrder extends React.Component {
     this.state = { order: "", orderitem: "", isFulfilled: false };
   }
 
- 
   componentDidMount() {
     if (this.props.location.state && this.props.location.state.ordersCreated) {
       const currentprop = this.props.location.state.ordersCreated;
@@ -32,19 +31,22 @@ class CreatedOrder extends React.Component {
   }
 
   handleClick(e) {
-     axios.post(`http://localhost:5000/api/v1/users/fulfillorder/${this.state.order._id}`, qs.stringify(this.state.isFulfilled),
-     {
-      headers: {
-        auth_token: this.props.cookies.get("token"),
-      },
-    })
-    .then((response)=> {this.setState(prevState =>({isFulfilled: !prevState.isFulfilled}))
-    console.log('fulfilled route working')
-  })
-    .catch(err=> console.log(err))
-    
-}
-
+    axios
+      .post(
+        `http://localhost:5000/api/v1/users/fulfillorder/${this.state.order._id}`,
+        qs.stringify(this.state.isFulfilled),
+        {
+          headers: {
+            auth_token: this.props.cookies.get("token"),
+          },
+        }
+      )
+      .then((response) => {
+        this.setState((prevState) => ({ isFulfilled: !prevState.isFulfilled }));
+        console.log("fulfilled route working");
+      })
+      .catch((err) => console.log(err));
+  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -80,60 +82,73 @@ class CreatedOrder extends React.Component {
           ""
         ) : (
           <div className="createdorder-page">
-          <div className="createdorder container">
-            <h2>Edit your created order</h2>
-            <p>Restaurant: {this.state.order.restaurant}</p>
-            <p>Delivery time (mins): {this.state.order.deliveryTimeEst}</p>
-            <p>Delivery fee ($): {this.state.order.deliveryFee}</p>
-            <p>Meetup Point: {this.state.order.meetupPoint}</p>
-            {this.state.order.orderDetails.map((eachorder) => {
-              return this.state.order.userid ===
-                eachorder[Object.keys(eachorder)[2]] ? (
-                <form
-                  onSubmit={(e) => {
-                    this.handleSubmit(e);
-                  }}
-                >
-                  <div class="form-group">
-                    <label for="order">
-                      {eachorder[Object.keys(eachorder)[2]]}
-                    </label>
-                    <textarea
-                      rows="3"
-                      class="form-control"
-                      id="order"
-                      style={{ whiteSpace: "pre-wrap" }}
-                      value={this.state.orderitem}
-                      name="food"
-                      onChange={(e) => {
-                        this.handleChange(e);
-                      }}
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-outline-success">
-                    Edit
+            <div className="createdorder container">
+              <h2>Edit your created order</h2>
+              <p>Restaurant: {this.state.order.restaurant}</p>
+              <p>Delivery time (mins): {this.state.order.deliveryTimeEst}</p>
+              <p>Delivery fee ($): {this.state.order.deliveryFee}</p>
+              <p>Meetup Point: {this.state.order.meetupPoint}</p>
+              {this.state.order.orderDetails.map((eachorder) => {
+                return this.state.order.userid ===
+                  eachorder[Object.keys(eachorder)[2]] ? (
+                  <form
+                    onSubmit={(e) => {
+                      this.handleSubmit(e);
+                    }}
+                  >
+                    <div class="form-group">
+                      <label for="order">
+                        {eachorder[Object.keys(eachorder)[2]]}
+                      </label>
+                      <textarea
+                        rows="3"
+                        class="form-control"
+                        id="order"
+                        style={{ whiteSpace: "pre-wrap" }}
+                        value={this.state.orderitem}
+                        name="food"
+                        onChange={(e) => {
+                          this.handleChange(e);
+                        }}
+                      />
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">
+                      Edit
+                    </button>
+                  </form>
+                ) : (
+                  <p>
+                    {eachorder[Object.keys(eachorder)[2]]}:{" "}
+                    {eachorder[Object.keys(eachorder)[0]]}
+                  </p>
+                );
+              })}
+              <div className="the-btn">
+                {this.state.isFulfilled ? (
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-lg"
+                    disabled
+                  >
+                    Order completed
                   </button>
-                </form>
-              ) : (
-                <p>
-                  {eachorder[Object.keys(eachorder)[2]]}:{" "}
-                  {eachorder[Object.keys(eachorder)[0]]}
-                </p>
-              );
-            })}
+                ) : (
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={(e) => {
+                      this.handleClick(e);
+                    }}
+                  >
+                    Confirm order
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
-
-                {this.state.isFulfilled? (<button type="button" class="btn btn-secondary btn-lg" disabled>Order completed</button>): 
-                <button type="button" class="btn btn-primary" onClick= {e => {this.handleClick(e)}}>Confirm order</button>
-                
-                }
-                
-            
+        )}
       </div>
-    )
-  }
-  </div>
-  )
+    );
   }
 }
 
