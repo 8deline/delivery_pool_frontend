@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { withCookies } from "react-cookie";
+import "./ordersCreated.scss";
 
 class ordersCreated extends React.Component {
   constructor(props) {
@@ -33,41 +34,48 @@ class ordersCreated extends React.Component {
   render() {
     return (
       <div className="orders-created-section">
-        <h1>Orders Created</h1>
+        <h1 className="orders-created-heading">Orders Created</h1>
         <div className="ordersCreated row">
           {this.state.ordersCreated.length > 0 ? (
             this.state.ordersCreated.map((item) => {
               return (
-                <div className="col-4" key={item._id}>
-                  <div className="restaurant">{item.restaurant}</div>
-                  <div>Created by: {item.userid}</div>
-                  <div>
-                    Total: <strong>${item.deliveryFee}</strong>
-                    <span className="delivery-fee"> delivery fee</span>
-                  </div>
-                  <div>
-                    No. of pax:
-                    <strong> {item.usersjoined.length + 1} (currently)</strong>
-                  </div>
-                  <span className="meetupPoint">
-                    <span> MeetUp Point: {item.meetupPoint} </span>
-                  </span>
-                  <div className="time">
-                    <i className="fas fa-clock"></i>
-                    <span> {item.deliveryTimeEst} min</span>
-                  </div>
-                  <Link
-                    to={{
-                      pathname: `/users/allOrder/${item._id}`,
-                      state: { ordersCreated: item },
-                    }}
-                  >
-                    <div className="lets-join-btn">
-                      <button className="btn btn-primary">
-                        <i className="fas fa-info-circle"> Edit Your Orders</i>
-                      </button>
+                <div className="col-sm-4" key={item._id}>
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="restaurant">
+                        <strong>{item.restaurant}</strong>
+                      </div>
+                      <div className="created-by-user">
+                        <strong>Created by:</strong> <i>{item.userid}</i>
+                      </div>
+                      <div className="delivery-fee">
+                        <strong>Delivery fee:</strong>{" "}
+                        <i>${item.deliveryFee}</i>
+                      </div>
+                      <div className="no-of-pax">
+                        <strong>No. of pax:</strong>{" "}
+                        <i>{item.usersjoined.length + 1} (currently)</i>
+                      </div>
+                      <div className="meetupPoint">
+                        <strong>*MeetUp Point*</strong> <br />
+                        {item.meetupPoint}
+                      </div>
+                      <div className="time">
+                        <i className="fas fa-clock"></i>
+                        <span> {item.deliveryTimeEst} min</span>
+                      </div>
+                      <Link
+                        to={{
+                          pathname: `/users/allOrder/${item._id}`,
+                          state: { ordersCreated: item },
+                        }}
+                      >
+                        <div className="edit-btn">
+                          <button className="btn">Edit Your Order</button>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
                 </div>
               );
             })
