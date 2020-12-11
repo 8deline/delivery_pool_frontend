@@ -11,7 +11,7 @@ class CreateOrderButton extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('https://git.heroku.com/delivery-pool-backend.git/api/v1/users/neworder', { headers: { auth_token: this.props.cookies.get("token") } })
+        axios.get('https://delivery-pool-backend.herokuapp.com/api/v1/users/neworder', { headers: { auth_token: this.props.cookies.get("token") } })
         .then(response=>{
             //console.log(response.data.address)
             this.setState({address: response.data.default_address})

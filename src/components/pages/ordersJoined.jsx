@@ -18,7 +18,7 @@ class ordersJoined extends React.Component {
 
   getOrdersJoined() {
     axios
-      .get("https://git.heroku.com/delivery-pool-backend.git/api/v1/orders-joined", {
+      .get("https://delivery-pool-backend.herokuapp.com/api/v1/orders-joined", {
         headers: {
           auth_token: this.props.cookies.get("token"),
         },

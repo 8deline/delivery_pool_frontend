@@ -23,7 +23,7 @@ class JoinOrderForm extends React.Component {
     console.log(this.state.orderitem);
     axios
       .post(
-        `https://git.heroku.com/delivery-pool-backend.git/api/v1/users/joinorder/${this.state.orderdetails._id}`,
+        `https://delivery-pool-backend.herokuapp.com/api/v1/users/joinorder/${this.state.orderdetails._id}`,
         qs.stringify(this.state),
 
         { headers: { auth_token: this.props.cookies.get("token") } }

@@ -29,7 +29,7 @@ class Index extends React.Component {
     // e.preventDefault();
     axios
       .post(
-        "https://git.heroku.com/delivery-pool-backend.git/api/v1/location",
+        "https://delivery-pool-backend.herokuapp.com/api/v1/location",
         qs.stringify({
           address: this.state.address,
         })

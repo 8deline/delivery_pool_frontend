@@ -35,7 +35,7 @@ class Login extends React.Component {
     // make api call to login
     axios
       .post(
-        "https://git.heroku.com/delivery-pool-backend.git/api/v1/users/login",
+        "https://delivery-pool-backend.herokuapp.com/api/v1/users/login",
         qs.stringify({
           email: this.state.email,
           password: this.state.password,

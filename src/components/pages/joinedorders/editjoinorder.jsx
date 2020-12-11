@@ -30,7 +30,7 @@ class EditJoinOrder extends React.Component {
 
       axios
         .get(
-          `https://git.heroku.com/delivery-pool-backend.git/api/v1/users/joinorder/${this.state.orderdetails._id}`,
+          `https://delivery-pool-backend.herokuapp.com/api/v1/users/joinorder/${this.state.orderdetails._id}`,
           {
             headers: {
               auth_token: this.props.cookies.get("token"),
@@ -80,7 +80,7 @@ class EditJoinOrder extends React.Component {
     console.log(this.state.orderdetails._id);
     axios
       .post(
-        `https://git.heroku.com/delivery-pool-backend.git/api/v1/users/editjoinorder/${this.state.orderdetails._id}`,
+        `https://delivery-pool-backend.herokuapp.com/api/v1/users/editjoinorder/${this.state.orderdetails._id}`,
         qs.stringify(this.state),
 
         { headers: { auth_token: this.props.cookies.get("token") } }

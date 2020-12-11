@@ -70,7 +70,7 @@ class NewOrderForm extends React.Component {
     e.preventDefault();
     axios
       .post(
-        "https://git.heroku.com/delivery-pool-backend.git/api/v1/users/neworder/create",
+        "https://delivery-pool-backend.herokuapp.com/api/v1/users/neworder/create",
         qs.stringify({
           meetupPoint: this.state.meetupPoint,
           restaurant: this.state.restaurant,

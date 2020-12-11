@@ -33,7 +33,7 @@ class CreatedOrder extends React.Component {
   handleClick(e) {
     axios
       .post(
-        `https://git.heroku.com/delivery-pool-backend.git/api/v1/users/fulfillorder/${this.state.order._id}`,
+        `https://delivery-pool-backend.herokuapp.com/api/v1/users/fulfillorder/${this.state.order._id}`,
         qs.stringify(this.state.isFulfilled),
         {
           headers: {
@@ -52,7 +52,7 @@ class CreatedOrder extends React.Component {
     e.preventDefault();
     axios
       .post(
-        `https://git.heroku.com/delivery-pool-backend.git/api/v1/users/orderscreated/${this.state.order._id}`,
+        `https://delivery-pool-backend.herokuapp.com/api/v1/users/orderscreated/${this.state.order._id}`,
         qs.stringify(this.state),
         {
           headers: {
