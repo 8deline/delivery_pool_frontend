@@ -2,6 +2,11 @@ import React from "react";
 import axios from "axios";
 import { withCookies } from "react-cookie";
 import qs from "qs";
+import { withRouter } from "react-router";
+// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+// import { styles } from 'react-select-bootstrap3';
+import "./newOrderForm.scss";
+
 
 class NewOrderForm extends React.Component {
   constructor(props) {
@@ -16,8 +21,46 @@ class NewOrderForm extends React.Component {
     };
   }
 
+  componentDidMount(){
+        
+    if (this.props.location.state && this.props.location.state.address) {
+        this.setState({
+            meetupPoint: this.props.location.state.address
+        })
+        return
+    }
+    
+     } 
+
+
+    // handleAddressChange = (meetupPoint, { action }) => {
+    //   console.log(meetupPoint, action);
+    //   switch (action) {
+    //     case 'input-change':
+    //       this.setState({ meetupPoint });
+    //       return;
+    //     case 'menu-close':
+    //       console.log(this.state.meetupPoint);
+    //       let menuIsOpen = undefined;
+    //       if (this.state.meetupPoint) {
+    //         menuIsOpen = true;
+    //       }
+    //       this.setState({
+    //         menuIsOpen
+    //       });
+    //       return;
+    //     default:
+    //       return;
+    //   }
+    // }
+
+    handleAddressChange(e) {
+      this.setState({meetupPoint: e.label})
+    }
+
+
   handleChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -42,7 +85,7 @@ class NewOrderForm extends React.Component {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           meetupPoint: "",
           restaurant: "",
@@ -57,16 +100,19 @@ class NewOrderForm extends React.Component {
   }
 
   render() {
+    
     return (
-      <div>
-        <div>
+      <div className="neworderform-page">
+
+      <div className="neworderform container">
           <form
             onSubmit={(e) => {
               this.handleSubmit(e);
             }}
           >
+            <h2>Create your own Order</h2>
             <div className="form-group">
-              <label htmlFor="restaurant">Restaurant (required)</label>
+              <label htmlFor="restaurant">Restaurant Name *</label>
               <input
                 type="text"
                 className="form-control"
@@ -83,10 +129,11 @@ class NewOrderForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="estDeliveryTime">
-                Estimated delivery time (mins) (required)
+                Estimated Delivery Time (mins) *
               </label>
               <input
                 type="number"
+                min="5"
                 step="1"
                 className="form-control"
                 id="estDeliveryTime"
@@ -102,11 +149,12 @@ class NewOrderForm extends React.Component {
 
             <div className="form-group">
               <label htmlFor="estDeliveryFee">
-                Estimated delivery fee (required){" "}
+                Estimated Delivery Fee ($) *{" "}
               </label>
               <input
                 type="number"
-                step=".01"
+                step="0.5"
+                min="1"
                 className="form-control"
                 id="estDeliveryFee"
                 name="estDeliveryFee"
@@ -120,7 +168,7 @@ class NewOrderForm extends React.Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="meetupPoint">Meetup Point (required)</label>
+              <label htmlFor="meetupPoint">Meetup Point *</label>
               <input
                 type="text"
                 className="form-control"
@@ -133,10 +181,25 @@ class NewOrderForm extends React.Component {
                 }}
                 required
               />
+              {/* <div style={{width: '700px'}}>
+              <GooglePlacesAutocomplete apiKey= {process.env.API_KEY} autocompletionRequest={{
+                  bounds: [
+                    { lat: 50, lng: 50 },
+                    { lat: 100, lng: 100 }
+                  ],
+                  componentRestrictions: {
+                  country: ['sg'],
+                  }
+                 
+                }} selectProps= {{value: {label: this.state.meetupPoint, value: this.state.meetupPoint}, styles:{'width':'800px'}, onChange: (e=> this.handleAddressChange(e))}} /> 
+                
+                </div>           */}
+ 
+  
             </div>
 
             <div className="form-group">
-              <label htmlFor="order">Your order (required)</label>
+              <label htmlFor="order">Your Order *</label>
               <textarea
                 className="form-control"
                 id="order"
@@ -150,15 +213,17 @@ class NewOrderForm extends React.Component {
                 required
               ></textarea>
             </div>
-
-            <button type="submit" className="btn btn-primary">
+            <p>* marked fields are mandatory</p>
+            <button type="submit" className="btn btn-outline-success">
               Submit
             </button>
+            
           </form>
         </div>
       </div>
+
     );
   }
 }
 
-export default withCookies(NewOrderForm);
+export default withRouter(withCookies(NewOrderForm));

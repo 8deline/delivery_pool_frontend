@@ -1,0 +1,64 @@
+$form-bg: #f8f4e5;
+$form-border: #f45702;
+$form-shadow: #dfae4b;
+$form-focus: #6bd4b1;
+$font-size: 12pt;
+$font-face: "Spartan";
+$font-color: #2a293e;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.neworderform-page {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2044837-jpeg.jpg")
+    center center no-repeat;
+  background-size: cover;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-size: $font-size;
+  font-family: $font-face;
+  color: $font-color;
+  // height: calc(100vh - 70px);
+}
+h2 {
+  padding-bottom: 15px;
+}
+.neworderform {
+  background: $form-bg;
+  padding: 50px 100px;
+  border-top: 10px solid $form-border;
+}
+
+.form-control {
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background: $form-bg;
+  padding-left: 5px;
+  outline: none;
+}
+
+.form-control:focus {
+  border: 1px solid $form-border;
+}
+.form-control:hover {
+  background: inherit;
+  color: $form-border;
+  border-bottom: 2px solid $form-border;
+}
+
+::selection {
+  background: rgb(255, 199, 184);
+}
+
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus {
+  border: 1px solid $form-border;
+  box-shadow: 0px;
+  -webkit-text-fill-color: $font-color;
+  -webkit-box-shadow: 0 0 0px 1000px $form-bg inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

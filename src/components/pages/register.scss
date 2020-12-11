@@ -1,5 +1,5 @@
 .home-page-first-section {
-  height: calc(100vh - 70px);
+  height: calc(100vh);
   background-size: cover;
   background-position: center;
 
@@ -12,8 +12,8 @@
     position: absolute;
     left: 0;
     border-radius: 10px;
-    margin-top: 15%;
-    padding: 3% 2%;
+    margin-top: 10%;
+    padding: 3% 2% 1% 2%;
 
     .home-page-first-para {
       font-size: 28px;
@@ -25,6 +25,7 @@
     .home-page-second-para {
       font-size: 32px;
       font-weight: bold;
+      margin-bottom: 0px !important;
     }
 
     .location-input {
@@ -43,28 +44,22 @@
   margin-top: 5%;
   height: 100vh;
 
-  .users-near-you {
-    border: 1px solid black;
+  img {
+    width: 100%;
     border-radius: 20px;
-    margin: 2% auto;
-    padding: 5%;
-
-    .restaurant {
-      font-size: 25px;
-      font-weight: 700;
-    }
-
-    .delivery-fee {
-      font-weight: 200;
-    }
-
-    .lets-join-btn {
-      margin-top: 5%;
-      text-align: center;
-    }
-
-    .time {
-      margin-left: 4%;
-    }
   }
+}
+.form-group,
+.col-4 {
+  padding: 5px;
+  margin: 0px auto !important;
+}
+
+.btn {
+  margin-top: 15px !important;
+  margin-bottom: 0px !important;
+}
+
+.form-control {
+  margin-top: 0px !important;
 }
