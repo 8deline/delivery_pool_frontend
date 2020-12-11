@@ -67,7 +67,7 @@ class Register extends React.Component {
 
     axios
       .post(
-        "http://localhost:5000/api/v1/users/register",
+        "https://git.heroku.com/delivery-pool-backend.git/api/v1/users/register",
         qs.stringify({
           first_name: this.state.first_name,
           last_name: this.state.last_name,
