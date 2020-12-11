@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
 import { Link } from "react-router-dom";
-// import "./Login.scss";
+import "./Login.scss";
 
 class Login extends React.Component {
   constructor(props) {

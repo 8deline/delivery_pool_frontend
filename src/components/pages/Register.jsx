@@ -3,7 +3,7 @@ import { withCookies } from "react-cookie";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-// import "./register.scss";
+import "./register.scss";
 
 class Register extends React.Component {
   constructor(props) {
