@@ -17,7 +17,7 @@ class ordersCreated extends React.Component {
 
   getOrdersCreated() {
     axios
-      .get("http://localhost:5000/api/v1/orders-created", {
+      .get("https://git.heroku.com/delivery-pool-backend.git/api/v1/orders-created", {
         headers: {
           auth_token: this.props.cookies.get("token"),
         },

@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
 
   getLocationNearUser() {
     axios
-      .get("http://localhost:5000/api/v1/orders-location", {
+      .get("https://git.heroku.com/delivery-pool-backend.git/api/v1/orders-location", {
         headers: {
           auth_token: this.props.cookies.get("token"),
         },
@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
     // e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/api/v1/orders-location",
+        "https://git.heroku.com/delivery-pool-backend.git/api/v1/orders-location",
         qs.stringify({
           address: this.state.address,
         }),

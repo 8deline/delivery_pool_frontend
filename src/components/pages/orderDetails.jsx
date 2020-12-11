@@ -27,7 +27,7 @@ class orderDetails extends React.Component {
 
   getOrderDetails() {
     axios
-      .get(`http://localhost:5000/api/v1/orders/${this.props.match.params.id}`)
+      .get(`https://git.heroku.com/delivery-pool-backend.git/api/v1/orders/${this.props.match.params.id}`)
       .then((response) => {
         this.setState({
           order: response.data,
