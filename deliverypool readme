@@ -1,11 +1,11 @@
-#Delivery pool
+# Delivery pool
 A full stack web application that allow users to search for people ordering food near them to save delivery cost.
 
-###Technologies
+### Technologies
 MERN stack
 Mongoose, Express, React, Node.js 
 
-###Approach taken
+### Approach taken
 Used JWT and react-cookies to verify, send and receive user information in a stateless application
 Used both google Geocoding API and mongoDB $geonear aggregation pipeline in order to obtain the coordinates of a user location and return a list of other users nearby
 
